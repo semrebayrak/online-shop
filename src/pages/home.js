@@ -11,8 +11,6 @@ import CompaniesContext from "../context/companiescontext";
 import ItemsContext from "../context/itemscontext";
 import Header from "../components/basiccomponents/header";
 
-
-
 const Home = () => {
   const { items, itemsLoading } = useContext(ItemsContext);
   const { companies, companiesLoading } = useContext(CompaniesContext);
@@ -43,9 +41,7 @@ const Home = () => {
         <SearchBox type="Brands" data={companies.map((item) => item.name)} />
         <SearchBox type="Tags" data={tags} />
 
-
-        
-        <Products/>
+        <Products />
         <Basket />
       </Fragment>
     );

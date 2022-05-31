@@ -15,33 +15,35 @@ export const Products = () => {
   const pageSize = 16;
   const siblingCount = 3;
 
-  const { items, setItems } = useContext(ItemsContext);
-  const [productTypes, setProductTypes] = useState(["mug", "shirt"]);
-  const [selectedType, setSelectedType] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [allProducts, setAllProducts] = useState();
-  const [productsOnPage, setProductsOnPage] = useState();
+  const {
+    items,
+    productsToDisplay,
+    productTypes,
+    selectedType,
+    setSelectedType,
+  } = useContext(ItemsContext);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsOnPage, setProductsOnPage] = useState();
   const [totalCount, setTotalCount] = useState(items.length);
 
   useEffect(() => {
-    if (selectedType != null) {
-      // burayı sadeleştirip if else i filterdan önce koymayı dene
-      let tempItems = items.filter(
-        (item) => item.itemType == productTypes[selectedType]
-      );
+    if (productsToDisplay) { 
       setProductsOnPage(
-        tempItems.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+        productsToDisplay.slice(
+          (currentPage - 1) * pageSize,
+          currentPage * pageSize
+        )
       );
-      setTotalCount(tempItems.length);
-    } else {
-      setProductsOnPage(
-        items.slice((currentPage - 1) * pageSize, currentPage * pageSize)
-      );
-      setTotalCount(items?.length);
-    }
-  }, [currentPage, items, selectedType]);
 
+      setTotalCount(productsToDisplay.length);
+    }
+  }, [currentPage, productsToDisplay]);
+
+  const changeSelectedType = (value) => {
+    setCurrentPage(1);
+    setSelectedType(value);
+  };
   const paginationRange = usePagination({
     currentPage,
     totalCount,
@@ -49,15 +51,17 @@ export const Products = () => {
     pageSize,
   });
 
+  let lastPage = paginationRange[paginationRange.length - 1];
+
   const onNext = () => {
-    setCurrentPage(currentPage + 1);
+    if (currentPage < lastPage) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   const onPrevious = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
-
-  let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
     <ProductCSS.ProductsContainer>
@@ -68,7 +72,7 @@ export const Products = () => {
             key={index}
             type={type}
             index={index}
-            setSelectedType={setSelectedType}
+            changeSelectedType={changeSelectedType}
             clicked={selectedType === index}
           />
         ))}

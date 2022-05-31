@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import ItemsContext from "../../context/itemscontext";
 import FilterCSS from "../../css/filters/filters";
 
-const SortingBox = ({ type, onChange }) => {
+const SortingBox = ({ type }) => {
 
   const {items,setItems} = useContext(ItemsContext);
   const sortingOptions = [
@@ -12,7 +12,6 @@ const SortingBox = ({ type, onChange }) => {
     "Old to new",
   ];
   const [selectedIndex, setSelectedIndex] = useState();
-  const [reflesh, setReflesh] = useState(false);
 
   useEffect(() => {
     
@@ -48,7 +47,6 @@ const SortingBox = ({ type, onChange }) => {
                   checked={selectedIndex===index}
                   onChange={() => { setSelectedIndex(index)}}
                   type="checkbox"
-                  id="checkbox"
                 />
 
                 <p>{option}</p>
