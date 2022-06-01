@@ -35,7 +35,7 @@ const SortingBox = ({ absoluteOnMobile,hide,setHideSortBox,type }) => {
     }
     setItems(tempArray)
 
-  }, [selectedIndex,items,setItems]);
+  }, [selectedIndex]);
   return (
     <FilterCSS.FilterContainer>
       

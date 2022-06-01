@@ -75,7 +75,7 @@ export const FilterCSS = {
 
       display: ${(props) => (props.hide ? "none" : "flex")};
       position: ${(props) => props.absoluteOnMobile && "absolute"};
-      z-index: ${(props) => props.absoluteOnMobile && "99999"};
+      z-index: ${(props) => props.absoluteOnMobile && "9"};
       left: ${(props) => props.absoluteOnMobile && "25px"};
       top: ${(props) => props.absoluteOnMobile && "420px"};
       border-width: ${(props) => props.absoluteOnMobile && "0px 1px 1px 1px"};

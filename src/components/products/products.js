@@ -13,7 +13,7 @@ import ItemsContext from "../../context/itemscontext";
 
 export const Products = () => {
   const pageSize = 16;
-  const siblingCount = 3;
+  const siblingCount = 1;
 
   const {
     items,
@@ -90,7 +90,7 @@ export const Products = () => {
         {paginationRange.map((page, index) => (
           <ProductPaginationCSS.PageButton
             key={page}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => !String(page).includes("..") &&  setCurrentPage(page)}
             active={page === currentPage}
           >
             {page}

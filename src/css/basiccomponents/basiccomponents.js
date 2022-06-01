@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const HeaderCSS = {
   HeaderContainer: styled.div`
+    position: -webkit-sticky; /* Safari */
+    top: 0;
+    position: sticky;
     background-color: #1976d2;
     border-bottom: 1px solid #e5e5e5;
     height: 76px;
@@ -9,6 +12,7 @@ export const HeaderCSS = {
     margin: -24px -24px 24px -24px;
     display: flex;
     align-items: center;
+    z-index: 999;
   `,
 
   CartDiv: styled.div`
@@ -30,7 +34,7 @@ export const HeaderCSS = {
       height: 40px;
       width: 100px;
       border-radius: 15px;
-      cursor:pointer;
+      cursor: pointer;
     }
   `,
 };

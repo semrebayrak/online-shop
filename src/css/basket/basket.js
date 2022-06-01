@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BasketCSS = {
   Rectangle: styled.div`
-    position: absolute;
+    position: fixed;
     right: 5% ;
     background-color: #ffffff;
     flex-direction: column;
@@ -14,7 +14,7 @@ export const BasketCSS = {
     border-radius: 2px;
     display: flex;
     @media only screen and (max-width: 1400px) {
-      top: 70px;
+      top: 66px;
       width: 275px;
       right: 20px;
      
