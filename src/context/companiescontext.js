@@ -9,7 +9,7 @@ export const CompaniesProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchCompanies = async () => {
-      await fetch("http://renkligoz.com/data/companies.json")
+      await fetch("http://localhost:8000/companies")
         .then((res) => res.json())
         .then((result) => setCompanies(result));
     };

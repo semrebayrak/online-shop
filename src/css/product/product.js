@@ -141,16 +141,30 @@ export const ProductPaginationCSS = {
   font-size: 14px;
   width: 80vw;
   padding:0;
+  height: 70px;
+  position:relative;
+  right: 32.5%;
+
+
+  @media (max-width: 1400px) {
+    right: 12.5%;
+
+
+  }
+  @media (max-width: 1050px) {
+    right: 30%;
+
+  }
+   
   @media (max-width: 805px) {
-  
-    font-size: 13px;
+    position:initial;
+    right: none;
 
   }
 `,
 
 PageDirection: styled.div`
 justify-content: center;
-  
   align-items: center;
   display: flex;
   gap: 7px;
@@ -160,6 +174,7 @@ justify-content: center;
   @media (max-width: 805px) {
   
     width: 20%;
+    display: none;
   }
 `,
   PageButton: styled.button`
@@ -173,5 +188,6 @@ justify-content: center;
       background-color: #1976d2;
       color: #ffffff;
     }
+    
   `,
 };

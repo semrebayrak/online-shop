@@ -53,8 +53,7 @@ export const ItemsProvider = ({ children }) => {
   ]);
 
   const fetchItems = async () => {
-    await fetch("http://renkligoz.com/data/items.json")
-
+    await fetch("http://localhost:8000/items")
       .then((res) => res.json())
       .then((result) => setItems(result));
   };
