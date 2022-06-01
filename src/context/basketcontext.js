@@ -5,6 +5,8 @@ const BasketContext = createContext();
 export const BasketProvider = ({ children }) => {
   const [basket, setBasket] = useState([]);
   const [totalAmount, setTotalAmount] = useState();
+  const [mobileDisplay, setMobileDisplay] = useState(false);
+
   useEffect(() => {
     let total = 0;
     basket?.forEach((item) => {
@@ -15,7 +17,7 @@ export const BasketProvider = ({ children }) => {
   }, [basket]);
 
   return (
-    <BasketContext.Provider value={{ basket, setBasket, totalAmount }}>
+    <BasketContext.Provider value={{ basket, setBasket, totalAmount,mobileDisplay,setMobileDisplay }}>
       {children}
     </BasketContext.Provider>
   );

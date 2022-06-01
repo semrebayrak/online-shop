@@ -9,10 +9,10 @@ import { HeaderCSS } from "../../css/basiccomponents/basiccomponents";
 
 
 const Header = () => {
-  const { totalAmount } = useContext(BasketContext);
+  const { totalAmount,mobileDisplay,setMobileDisplay } = useContext(BasketContext);
   return (
     <HeaderCSS.HeaderContainer>
-      <HeaderCSS.CartDiv>
+      <HeaderCSS.CartDiv onClick={() => setMobileDisplay(!mobileDisplay)}>
         <FontAwesomeIcon icon={faShoppingBag} />
         {totalAmount}
       </HeaderCSS.CartDiv>

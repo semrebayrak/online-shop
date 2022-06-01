@@ -1,28 +1,23 @@
 import { useContext } from "react";
 import BasketContext from "../../context/basketcontext.js";
-import {BasketCSS} from "../../css/basket/basket.js";
+import { BasketCSS } from "../../css/basket/basket.js";
 import BasketItem from "./basketitem.js";
 
 export const Basket = () => {
-
-  const {basket,totalAmount} = useContext(BasketContext);
-
+  const { basket, totalAmount,mobileDisplay } = useContext(BasketContext);
 
 
   return (
-    <BasketCSS.Rectangle>
-      {
-        basket?.map((item,index) => {
-          
-          return(
-            <BasketItem key={index} item={item}/>
-          )
-        })
+    <BasketCSS.Rectangle
+      mobileDisplay={mobileDisplay}
+    >
+      {basket.length>0 ?
+      basket.map((item, index) => {
+        return <BasketItem key={index} item={item} />;
+      }):
+      "Your basket is empty"
       }
-    <BasketCSS.PriceContainer>
-    {totalAmount}
-    </BasketCSS.PriceContainer>
-
+      <BasketCSS.PriceContainer>{totalAmount}</BasketCSS.PriceContainer>
     </BasketCSS.Rectangle>
   );
 };

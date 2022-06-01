@@ -3,24 +3,29 @@ import BasketContext from "../../context/basketcontext";
 import { ProductCSS } from "../../css/product/product";
 
 const SingleProduct = ({ product }) => {
-  const { basket, setBasket } = useContext(BasketContext);
+  const { basket, setBasket, productTypes } = useContext(BasketContext);
 
   const addToBasket = () => {
-  
     let tempBasket = [...basket];
 
-
-    let foundIndex = tempBasket.findIndex((element) => element===product);
-    if (foundIndex>-1) {
+    let foundIndex = tempBasket.findIndex((element) => element === product);
+    if (foundIndex > -1) {
       tempBasket[foundIndex]["quantity"]++;
     } else {
       product["quantity"] = 1;
       tempBasket.push(product);
     }
 
-   
     setBasket(tempBasket);
   };
+
+  // Prepare product info
+  
+  var temp = product.name.split(" ");
+  var productType = temp[temp.length - 1];
+  temp.pop();
+  var productName = temp.join(" ");
+
 
   return (
     <ProductCSS.SinlgeProductContainer>
@@ -32,7 +37,9 @@ const SingleProduct = ({ product }) => {
       </ProductCSS.ImageContainer>
       <ProductCSS.InfoContainer>
         <ProductCSS.Price>₺ {product.price}</ProductCSS.Price>
-        <ProductCSS.TextInfo>{product.name}</ProductCSS.TextInfo>
+        <ProductCSS.TextInfo>{productName}</ProductCSS.TextInfo>
+        <ProductCSS.TextInfo>{productType}</ProductCSS.TextInfo>
+
         <ProductCSS.Button
           onClick={() => {
             addToBasket();

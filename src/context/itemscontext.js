@@ -44,8 +44,7 @@ export const ItemsProvider = ({ children }) => {
         )
       );
     }
-   
-
+    
   };
 
   const fetchItems = async () => {

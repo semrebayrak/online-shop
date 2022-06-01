@@ -1,45 +1,11 @@
-import styled from "styled-components";
 import FilterCSS from "../../css/filters/filters";
-import { useContext, useState } from "react";
-import { useEffect } from "react";
-import ItemsContext from "../../context/itemscontext";
+import { useState } from "react";
+import SearchBoxListItem from "./searchboxlistitem";
 
 const SearchBox = ({ data, type }) => {
   const [value, setValue] = useState("");
-  const [selectedIndex, setSelectedIndex] = useState();
-  const { selectedBrands, setSelectedBrands, selectedTags, setSelectedTags } =
-    useContext(ItemsContext);
 
-
-  data = ["All",...data]
-
-  const handleCheck = (e) => {
-
-    let checked = e.currentTarget.checked;
-
-
-  
-    if(checked){
-      
-
-      if(type==="Brands"){
-        setSelectedBrands([...selectedBrands, e.target.value]);
-      }
-      else if(type==="Tags"){
-        setSelectedTags([...selectedTags, e.target.value]);
-      }
-    }
-    else{
-      if(type==="Brands"){
-        setSelectedBrands(selectedBrands.filter((item) => item !== e.target.value));
-      }
-      else if(type==="Tags"){
-        setSelectedTags(selectedTags.filter((item) => item !== e.target.value));
-      }
-    }
-   
-   
-  };
+  data = ["All", ...data];
 
   return (
     <FilterCSS.FilterContainer>
@@ -53,24 +19,10 @@ const SearchBox = ({ data, type }) => {
         />
 
         <FilterCSS.Ul>
-    
-          {data
+          {data.length >0 && data
             .filter((item) => item.toLowerCase().includes(value.toLowerCase()))
             ?.map((item, index) => {
-              return (
-                <FilterCSS.ListItem key={index}>
-                  <FilterCSS.CheckBoxSquared
-                  
-                    type="checkbox"
-                    onChange={handleCheck}
-                    value={item}
-                  />
-
-                  <p>
-                    {item} <FilterCSS.ItemNumber>(18)</FilterCSS.ItemNumber>
-                  </p>
-                </FilterCSS.ListItem>
-              );
+              return <SearchBoxListItem type={type} item={item} key={index} />;
             })}
         </FilterCSS.Ul>
       </FilterCSS.Rectangle>

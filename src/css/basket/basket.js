@@ -3,21 +3,30 @@ import styled from "styled-components";
 export const BasketCSS = {
   Rectangle: styled.div`
     position: absolute;
-    left: 72.22%;
+    right: 5% ;
     background-color: #ffffff;
     flex-direction: column;
-    top: 27.93%;
-    width: 296px;
+    top: 8vw;
+
+    width: 275px;
+
     border: 8px solid #1976d2;
     border-radius: 2px;
     display: flex;
+    @media only screen and (max-width: 1400px) {
+      top: 70px;
+      width: 275px;
+      right: 20px;
+     
+      display: ${(props) => (props.mobileDisplay ? "flex" : "none")};
+    }
   `,
   PriceContainer: styled.div`
     position: relative;
-    left: 63%;
+    left: 60%;
     top: 16px;
     color: #1976d2;
-    width: 92px;
+    width: 80px;
     height: 51px;
     font-weight: 600;
     border: 2px solid #1976d2;
@@ -25,6 +34,10 @@ export const BasketCSS = {
     text-align: center;
     line-height: 51px;
     margin-bottom: 8px;
+    @media only screen and (max-width: 1050px) {
+      width: 100%;
+      left: 0%;
+    }
   `,
 };
 
@@ -38,12 +51,12 @@ export const BasketItemCSS = {
     font-size: 15px;
     height: 85px;
     padding: 0;
-    justify-content: space-between;
   `,
   ItemInfo: styled.div`
     display: flex;
     flex-direction: column;
     padding: 0;
+    width 50%;
   `,
   CountOperations: styled.div`
     display: flex;
@@ -68,6 +81,6 @@ export const BasketItemCSS = {
   ChangeAmount: styled.div`
     text-align: center;
     padding: 0;
-    cursor:pointer;
+    cursor: pointer;
   `,
 };

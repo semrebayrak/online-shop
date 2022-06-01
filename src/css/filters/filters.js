@@ -3,40 +3,100 @@ import checkBoxWhite from "../../assets/icons/check.png";
 import checkBoxBlue from "../../assets/icons/checkblue.png";
 
 export const FilterCSS = {
-  FilterContainer: styled.div`
+  SearchOptions: styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    padding: 0;
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: auto;
+      position: static;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
   `,
+  FilterContainer: styled.div`
+    flex-direction: column;
+    width: 26%;
+    position: relative;
+    left: 10px;
+    display: flex;
+    @media (max-width: 768px) {
+      width: 44%;
+      left: 0;
+    }
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  `,
+  SortButton: styled.button`
+    display: none;
+    color: #f2f0fd;
+    padding: 10px;
+    background: #1976d2;
+    border: none;
+    @media (max-width: 768px) {
+      gap: 10px;
+      display: flex;
+      position: relative;
+      left: 24px;
+      cursor: pointer;
+    }
+  `,
+
   TypeText: styled.p`
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
     color: #697488;
     margin-bottom: 12px;
-
+    @media (max-width: 768px) {
+      display: ${(props) => props.hide && "none"};
+    }
   `,
 
   Rectangle: styled.div`
-    width: 296px;
-    max-height: 210px;
+    max-width: 300px;
+    min-width: 220px;
+
+    max-height: 255px;
     flex-direction: column;
     background: #ffffff;
     box-shadow: 0px 6px 24px rgba(93, 62, 188, 0.04);
     border-radius: 2px;
     align-items: center;
     display: flex;
+    @media (max-width: 768px) {
+      min-width: ${(props) => (props.absoluteOnMobile ? "250px" : "0px")};
+
+      display: ${(props) => (props.hide ? "none" : "flex")};
+      position: ${(props) => props.absoluteOnMobile && "absolute"};
+      z-index: ${(props) => props.absoluteOnMobile && "99999"};
+      left: ${(props) => props.absoluteOnMobile && "25px"};
+      top: ${(props) => props.absoluteOnMobile && "420px"};
+      border-width: ${(props) => props.absoluteOnMobile && "0px 1px 1px 1px"};
+      border-style: ${(props) => props.absoluteOnMobile && "solid"};
+      box-shadow: ${(props) =>
+        props.absoluteOnMobile && "0px 0px 10px 0px rgba(0,0,0,0.75)"};
+    }
+    @media (max-width: 600px) {
+      top: ${(props) => props.absoluteOnMobile && "753px"};
+    }
   `,
 
   InputTextBox: styled.input`
     ::placeholder {
       color: #a8a8a8;
     }
-    box-sizing: border-box;
     border: 2px solid #e0e0e0;
     border-radius: 2px;
 
-    width: 100%;
-    height: 48px;
+    width: 87%;
+    max-height: 18px;
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
@@ -48,10 +108,14 @@ export const FilterCSS = {
   `,
 
   ListItem: styled.li`
-   
+    padding: 0;
     display: flex;
     gap: 10px;
-    height: 40px;
+    min-height: 40px;
+    align-items: center;
+  `,
+  ListItemName: styled.p`
+    width: 80%;
   `,
 
   CheckBoxSquared: styled.input`

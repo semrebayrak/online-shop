@@ -1,20 +1,51 @@
 import styled from "styled-components";
 
-
 export const ProductCSS = {
   ProductsContainer: styled.div`
     display: flex;
     flex-direction: column;
     font-size: 20px;
     position: absolute;
-    left: 416px;
-    top: 203px;
+    left: 26%;
+    top: 100px;
+    min-width: 49%;
+
+    @media (max-width: 1400px) {
+      width: 70%;
+    }
+    @media (max-width: 1050px) {
+      left: 40%;
+      width: 56%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: auto;
+      position: static;
+    }
   `,
   ProductsList: styled.div`
     display: grid;
     background-color: #ffffff;
-    grid-gap: 24px;
-    grid-template-columns: 200px 200px 200px 200px;
+    column-gap: 5%;
+    row-gap: 25px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, max(20%, 125px));
+
+    @media (max-width: 1050px) {
+      column-gap: 7%;
+
+      max-width: 400px;
+      grid-template-columns: repeat(auto-fit, 140px);
+      min-width: 200px;
+    }
+    @media (max-width: 768px) {
+      max-width: none;
+      grid-template-columns: repeat(auto-fit, max(40%, 150px));
+    }
+    @media (max-width: 480px) {
+      max-width: none;
+      grid-template-columns: repeat(auto-fit, 80%);
+    }
   `,
   SinlgeProductContainer: styled.div`
     display: flex;
@@ -22,8 +53,9 @@ export const ProductCSS = {
     padding: 0;
   `,
   ImageContainer: styled.div`
+    padding: 0;
     background: #fefefe;
-    border: 1.17666px solid #f3f0fe;
+    border: 1px solid #f3f0fe;
     border-radius: 12px;
   `,
   Image: styled.img`
@@ -49,17 +81,21 @@ export const ProductCSS = {
     font-size: 14px;
     line-height: 20px;
     color: #191919;
+    width: 120%;
+
   `,
 
   Button: styled.button`
     width: 100%;
-    height: 40%;
+    height: 30%;
     left: 436px;
     top: 428px;
     color: white;
     background: #1976d2;
     border-radius: 2px;
+    margin-top: 10px;
     border: none;
+    cursor: pointer;
   `,
 };
 
@@ -69,11 +105,11 @@ export const ProductTypesCSS = {
     height: 30px;
     background: ${(props) => (props.active ? "#1976D2" : "#f2f0fd")};
     color: ${(props) => (props.active ? "#f2f0fd" : "#1976d2")};
-    
+
     border: none;
     padding: 0;
   `,
- 
+
   Container: styled.div`
     gap: 10px;
     padding-left: 0;
