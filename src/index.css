@@ -29,3 +29,7 @@ div{
 button{
   cursor: pointer;
 }
+
+#root{
+  padding:0;
+}

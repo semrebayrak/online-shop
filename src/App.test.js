@@ -69,7 +69,7 @@ test("Basket Add Item Test", async () => {
   expect(screen.getByTestId("basket-item")).toBeInTheDocument();
 });
 
-test("Tag Occurence Counter Test ", async () => {
+test("Tag Occurence Counter Test", async () => {
   const { container, rerender } = await act(async () =>
     render(
       <BasketProvider>
@@ -89,7 +89,7 @@ test("Tag Occurence Counter Test ", async () => {
   expect(tagItem.innerHTML > 0);
 });
 
-test("Brand Occurence Counter Test ", async () => {
+test("Brand Occurence Counter Test", async () => {
   const { container, rerender } = await act(async () =>
     render(
       <BasketProvider>
@@ -109,7 +109,7 @@ test("Brand Occurence Counter Test ", async () => {
   expect(tagItem.innerHTML > 0);
 });
 
-test("Sorting Test ", async () => {
+test("Sorting Test", async () => {
   const { container, rerender } = await act(async () =>
     render(
       <BasketProvider>

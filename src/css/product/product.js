@@ -119,7 +119,6 @@ export const ProductTypesCSS = {
     height: 30px;
     background: ${(props) => (props.active ? "#1976D2" : "#f2f0fd")};
     color: ${(props) => (props.active ? "#f2f0fd" : "#1976d2")};
-
     border: none;
     padding: 0;
   `,
@@ -134,23 +133,35 @@ export const ProductTypesCSS = {
 
 export const ProductPaginationCSS = {
   Container: styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 600;
+  align-items: center;
+  font-size: 14px;
+  width: 80vw;
+  padding:0;
+  @media (max-width: 805px) {
+  
+    font-size: 13px;
 
-    align-items: center;
-    font-size: 14px;
-  `,
+  }
+`,
 
-  PageDirection: styled.div`
-    align-items: center;
-    display: flex;
-    gap: 7px;
-    :hover {
-      color: #1976d2;
-    }
-  `,
+PageDirection: styled.div`
+justify-content: center;
+  
+  align-items: center;
+  display: flex;
+  gap: 7px;
+  :hover {
+    color: #1976d2;
+  }
+  @media (max-width: 805px) {
+  
+    width: 20%;
+  }
+`,
   PageButton: styled.button`
     width: 32px;
     height: 40px;

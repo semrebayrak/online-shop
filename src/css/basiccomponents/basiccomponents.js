@@ -9,7 +9,6 @@ export const HeaderCSS = {
     border-bottom: 1px solid #e5e5e5;
     height: 76px;
     color: #ffffff;
-    margin: -24px -24px 24px -24px;
     display: flex;
     align-items: center;
     z-index: 999;
@@ -27,7 +26,6 @@ export const HeaderCSS = {
     align-items: center;
     justify-content: center;
     @media (max-width: 1400px) {
-      right: 100px;
 
       color: #ffffff;
       border: 2px solid #ffffff;
@@ -45,18 +43,18 @@ export const FooterCSS = {
   justify-content: center;
   display:flex;
   margin-top:200px;
-    width: 100vw;
+    width: 100%;
     color: #1976D2;
     font-size 13px;
    text-align: center;
    flex-direction: row;
   gap:20px;
- 
   `,
 };
 export const Content = {
   ContentContainer: styled.div`
-    padding: 0px;
+    padding: 24px;
+    overflow:hidden;
     @media (max-width: 600px) {
      
     }
