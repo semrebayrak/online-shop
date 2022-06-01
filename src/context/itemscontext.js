@@ -58,10 +58,22 @@ export const ItemsProvider = ({ children }) => {
       .then((result) => setItems(result));
   };
 
+  const calculateProductTypes = useCallback(() => {
+    if (items) {
+      let itemTypes = [];
+
+      items.forEach((item) => {
+        if (!itemTypes.includes(item.itemType)) {
+          itemTypes.push(item.itemType);
+        }
+      });
+      setProductTypes(itemTypes);
+    }
+  }, [items]);
   useEffect(() => {
     if (items == null) fetchItems();
     else setItemsLoading(false);
-
+    calculateProductTypes();
     filterProducts();
   }, [items, selectedType, selectedBrands, selectedTags, filterProducts]);
 
