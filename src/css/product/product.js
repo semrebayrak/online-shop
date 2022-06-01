@@ -60,7 +60,7 @@ export const ProductCSS = {
       grid-template-columns: repeat(auto-fit, 80%);
     }
   `,
-  SinlgeProductContainer: styled.div`
+  SingleProductContainer: styled.div`
     display: flex;
     flex-direction: column;
     padding: 0;

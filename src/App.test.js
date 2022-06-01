@@ -108,3 +108,40 @@ test("Brand Occurence Counter Test ", async () => {
 
   expect(tagItem.innerHTML > 0);
 });
+
+test("Sorting Test ", async () => {
+  const { container, rerender } = await act(async () =>
+    render(
+      <BasketProvider>
+        <CompaniesProvider>
+          <ItemsProvider>
+            <Home></Home>
+          </ItemsProvider>
+        </CompaniesProvider>
+      </BasketProvider>
+    )
+  );
+ 
+  var highPriceItem
+  var lowPriceItem
+  await waitFor(() => {
+     screen.getByTestId("price low to high");
+  });
+
+  fireEvent.click(screen.getByTestId("price low to high"));
+  
+
+  await waitFor(() => {
+    lowPriceItem = screen.getByTestId("product-price-1");
+  });
+
+
+  fireEvent.click(screen.getByTestId("price low to high"));
+
+  await waitFor(() => {
+    highPriceItem = screen.getByTestId("product-price-1");
+  });
+
+
+  expect(lowPriceItem.innerHTML <highPriceItem.innerHTML);
+});

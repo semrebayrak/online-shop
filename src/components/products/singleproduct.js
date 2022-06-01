@@ -30,7 +30,7 @@ const SingleProduct = ({ product,index }) => {
   }
 
   return (
-    <ProductCSS.SinlgeProductContainer>
+    <ProductCSS.SingleProductContainer>
       <ProductCSS.ImageContainer>
         <ProductCSS.Image
           src="https://koctas-img.mncdn.com/mnresize/600/600/productimages/1000460503/1000460503_1_MC/8830702026802_1624880320071.jpg"
@@ -38,7 +38,7 @@ const SingleProduct = ({ product,index }) => {
         />
       </ProductCSS.ImageContainer>
       <ProductCSS.InfoContainer>
-        <ProductCSS.Price>₺ {product.price}</ProductCSS.Price>
+        <ProductCSS.Price data-testid={"product-price-" + index}>₺ {product.price}</ProductCSS.Price>
         <ProductCSS.TextInfo>{productName}</ProductCSS.TextInfo>
         <ProductCSS.TextInfo>{productType}</ProductCSS.TextInfo>
 
@@ -50,7 +50,7 @@ const SingleProduct = ({ product,index }) => {
           Add
         </ProductCSS.Button >
       </ProductCSS.InfoContainer>
-    </ProductCSS.SinlgeProductContainer>
+    </ProductCSS.SingleProductContainer>
   );
 };
 

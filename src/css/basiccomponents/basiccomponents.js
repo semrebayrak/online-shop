@@ -58,10 +58,7 @@ export const Content = {
   ContentContainer: styled.div`
     padding: 0px;
     @media (max-width: 600px) {
-      align-items: center;
-      justify-content: center;
-      flex-direction:column;
-      display:flex;
+     
     }
   `,
 };

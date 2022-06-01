@@ -1,45 +1,34 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { useEffect, useState } from "react";
 import CompaniesContext from "../../context/companiescontext";
 import ItemsContext from "../../context/itemscontext";
 import FilterCSS from "../../css/filters/filters";
 
-const SearchBoxListItem = ({ item, type,index }) => {
+const SearchBoxListItem = ({ item, type, index }) => {
   const [counter, setCounter] = useState(0);
-  const {
-    productsToDisplay,
-    selectedBrands,
-    setSelectedBrands,
-    selectedTags,
-    setSelectedTags,
-  } = useContext(ItemsContext);
+  const {items, productsToDisplay, setSelectedBrands, setSelectedTags } =
+    useContext(ItemsContext);
 
+  const [checked, setChecked] = useState(false);
   const { companies } = useContext(CompaniesContext);
-  const handleCheck = (e) => {
-    let checked = e.currentTarget.checked;
 
+  const handleCheck = () => {
     if (checked) {
       if (type === "Brands") {
-        setSelectedBrands([...selectedBrands, item]);
+        setSelectedBrands((prev) => [...prev, item]);
       } else if (type === "Tags") {
-        setSelectedTags([...selectedTags,item]);
+        setSelectedTags((prev) => [...prev, item]);
       }
     } else {
       if (type === "Brands") {
-        setSelectedBrands(
-          selectedBrands.filter((brand) => brand !== item)
-        );
+        setSelectedBrands((prev) => prev.filter((brand) => brand !== item));
       } else if (type === "Tags") {
-        setSelectedTags(selectedTags.filter((tag) => tag !== item));
+        setSelectedTags((prev) => prev.filter((tag) => tag !== item));
       }
     }
-
-    return checked
   };
 
-
-  const countItem = () => {
-
+  const countItem = useCallback(() => {
     if (item === "All") {
       setCounter(productsToDisplay.length);
       return;
@@ -49,30 +38,37 @@ const SearchBoxListItem = ({ item, type,index }) => {
         productsToDisplay.filter(
           (product) =>
             product.manufacturer ===
-            companies?.find((company) => company.name === item)?.slug
+            companies.find((company) => company.name === item).slug
         ).length
       );
     } else if (type === "Tags") {
-      setCounter(productsToDisplay.filter((product) => product.tags.includes(item)).length);
+      setCounter(
+        productsToDisplay.filter((product) => product.tags.includes(item))
+          .length
+      );
     }
-  }
+  }, [productsToDisplay,item, companies, type]);
   useEffect(() => {
     countItem();
-    
-  }, [productsToDisplay,companies,item,type]);
-  if(counter>0)
-  return (
-    <FilterCSS.ListItem>
-      <FilterCSS.CheckBoxSquared
-        type="checkbox"
-        onChange={handleCheck}
-        value={item}
-      />
-      <FilterCSS.ListItemName>
-        {item} <FilterCSS.ItemNumber data-testid={type + "-count-" + index }>({counter})</FilterCSS.ItemNumber>
-      </FilterCSS.ListItemName>
-    </FilterCSS.ListItem>
-  );
+    handleCheck();
+  }, [companies, item, type, countItem, checked]);
+  if (counter > 0)
+    return (
+      <FilterCSS.ListItem>
+        <FilterCSS.CheckBoxSquared
+          type="checkbox"
+          onChange={() => setChecked((prev) => !prev)}
+          value={item}
+          checked={checked}
+        />
+        <FilterCSS.ListItemName>
+          {item}{" "}
+          <FilterCSS.ItemNumber data-testid={type + "-count-" + index}>
+            ({item === "All" ? items.length :counter})
+          </FilterCSS.ItemNumber>
+        </FilterCSS.ListItemName>
+      </FilterCSS.ListItem>
+    );
 };
 
 export default SearchBoxListItem;

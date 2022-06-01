@@ -10,16 +10,18 @@ export const FilterCSS = {
     padding: 0;
     float:left; 
     @media (max-width: 805px) {
-      width: 100%;
+      width: 91vw;
       margin: auto;
       position: static;
       flex-direction: row;
-    display: flex;
-
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      gap: 50px
     }
     @media (max-width: 600px) {
       flex-direction: column;
+  
+      flex-direction:column;
     }
   `,
   Filters: styled.div`
@@ -44,7 +46,8 @@ export const FilterCSS = {
       left: 0;
     }
     @media (max-width: 600px) {
-      width: 100%;
+      width: 290px;
+     
     }
   `,
   SortButton: styled.button`
@@ -63,7 +66,7 @@ export const FilterCSS = {
 
     }
     @media (max-width: 600px) {
-      top:785px;
+      top:835px;
       
     }
   `,
@@ -81,7 +84,6 @@ export const FilterCSS = {
 
   Rectangle: styled.div`
     max-width: 300px;
-    min-width: 220px;
 
     max-height: 255px;
     flex-direction: column;
@@ -103,7 +105,8 @@ export const FilterCSS = {
         props.absoluteOnMobile && "0px 0px 10px 0px rgba(0,0,0,0.75)"};
     }
     @media (max-width: 600px) {
-      top: ${(props) => props.absoluteOnMobile && "720px"};
+      top: ${(props) => props.absoluteOnMobile && "770px"};
+      left: ${(props) => props.absoluteOnMobile && "0px"};
     }
   `,
 

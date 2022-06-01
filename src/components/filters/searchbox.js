@@ -7,6 +7,7 @@ const SearchBox = ({ data, type }) => {
 
   data = ["All", ...data];
 
+
   return (
     <FilterCSS.FilterContainer>
       <FilterCSS.TypeText>{type}</FilterCSS.TypeText>

@@ -51,6 +51,7 @@ const SortingBox = ({ absoluteOnMobile,hide,setHideSortBox,type }) => {
                   checked={selectedIndex===index}
                   onChange={() => { setSelectedIndex(index); setHideSortBox(!hide)}}
                   type="checkbox"
+                  data-testid= {option.toLowerCase()}
                 />
 
                 <p>{option}</p>

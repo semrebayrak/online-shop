@@ -23,7 +23,6 @@ export const ItemsProvider = ({ children }) => {
     } else {
       setProductsToDisplay(items);
     }
-    console.log(selectedTags);
 
     if (selectedTags.length > 0 && !selectedTags.includes("All")) {
       setProductsToDisplay((prev) =>
