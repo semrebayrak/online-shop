@@ -4,10 +4,10 @@ This project is built by React-Hooks
 
 The data is set on a JSON server which can be found in public/data/server.json
 
-CSS files are filed in a main directory named "css"
-Component files are filed in a main directory named "components"
-Pages(only 1) are filed in a main directory named "pages"
-Additional(only 1) hooks are filed in a main directory named "hooks"
+CSS files are filed in a main directory named "css"  <br/>
+Component files are filed in a main directory named "components"  <br/>
+Pages(only 1) are filed in a main directory named "pages"  <br/>
+Additional(only 1) hooks are filed in a main directory named "hooks"  <br/>
 
 To Run This Project: 
 
