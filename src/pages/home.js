@@ -18,6 +18,7 @@ const Home = () => {
   const { companies, companiesLoading } = useContext(CompaniesContext);
   const [tags, setTags] = useState([]);
   const [hideSortBox, setHideSortBox] = useState(true);
+
   const prepareTags = useCallback(() => {
     let tags = [];
     productsToDisplay?.forEach((item) => {
@@ -28,12 +29,11 @@ const Home = () => {
       });
     });
     setTags(tags);
-    return tags;
   }, [productsToDisplay]);
 
   useEffect(() => {
     prepareTags();
-  }, [prepareTags]);
+  }, [productsToDisplay]);
 
   if (!itemsLoading && !companiesLoading) {
     return (

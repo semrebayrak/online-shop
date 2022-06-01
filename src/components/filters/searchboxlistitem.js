@@ -6,29 +6,50 @@ import FilterCSS from "../../css/filters/filters";
 
 const SearchBoxListItem = ({ item, type, index }) => {
   const [counter, setCounter] = useState(0);
-  const {items, productsToDisplay, setSelectedBrands, setSelectedTags } =
-    useContext(ItemsContext);
+  const {
+    items,
+    productsToDisplay,
+    setSelectedBrands,
+    setSelectedTags,
+    selectedTags,
+    selectedBrands,
+  } = useContext(ItemsContext);
 
   const [checked, setChecked] = useState(false);
   const { companies } = useContext(CompaniesContext);
 
   const handleCheck = () => {
-    if (checked) {
-      if (type === "Brands") {
-        setSelectedBrands((prev) => [...prev, item]);
-      } else if (type === "Tags") {
-        setSelectedTags((prev) => [...prev, item]);
-      }
-    } else {
+    if (type === "Brands" && item === "All") {
+      setSelectedBrands(["All Brands"]);
+      return
+    } else if (type === "Tags" && item === "All") {
+      setSelectedTags(["All Tags"]);
+      return
+    }
+
+    if(type==="Tags" && selectedTags.includes("All Tags")){
+      setSelectedTags([])
+    }
+    else if(type==="Brands" && selectedBrands.includes("All Brands")){
+      setSelectedBrands([])
+    }
+
+
+    if (selectedTags.includes(item) || selectedBrands.includes(item)) {
       if (type === "Brands") {
         setSelectedBrands((prev) => prev.filter((brand) => brand !== item));
       } else if (type === "Tags") {
         setSelectedTags((prev) => prev.filter((tag) => tag !== item));
       }
+    } else {
+      if (type === "Brands") {
+        setSelectedBrands((prev) => [...prev, item]);
+      } else if (type === "Tags") {
+        setSelectedTags((prev) => [...prev, item]);
+      }
     }
   };
-
-  const countItem = useCallback(() => {
+  const countItem = () => {
     if (item === "All") {
       setCounter(productsToDisplay.length);
       return;
@@ -47,24 +68,31 @@ const SearchBoxListItem = ({ item, type, index }) => {
           .length
       );
     }
-  }, [productsToDisplay,item, companies, type]);
+  };
   useEffect(() => {
     countItem();
-    handleCheck();
   }, [companies, item, type, countItem, checked]);
-  if (counter > 0)
+  if (
+    counter > 0 ||
+    selectedTags.includes(item) ||
+    selectedBrands.includes(item)
+  )
     return (
       <FilterCSS.ListItem>
         <FilterCSS.CheckBoxSquared
           type="checkbox"
-          onChange={() => setChecked((prev) => !prev)}
+          onChange={handleCheck}
           value={item}
-          checked={checked}
+          checked={
+            item === "All" ?  ( type=="Tags" ? selectedTags.includes("All Tags") : selectedBrands.includes("All Brands"))
+              
+              : selectedTags.includes(item) || selectedBrands.includes(item)
+          }
         />
         <FilterCSS.ListItemName>
           {item}{" "}
           <FilterCSS.ItemNumber data-testid={type + "-count-" + index}>
-            ({item === "All" ? items.length :counter})
+            ({item === "All" ? items.length : counter})
           </FilterCSS.ItemNumber>
         </FilterCSS.ListItemName>
       </FilterCSS.ListItem>

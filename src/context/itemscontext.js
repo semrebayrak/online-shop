@@ -24,7 +24,7 @@ export const ItemsProvider = ({ children }) => {
       setProductsToDisplay(items);
     }
 
-    if (selectedTags.length > 0 && !selectedTags.includes("All")) {
+    if (selectedTags.length > 0 && !selectedTags.includes("All Tags")) {
       setProductsToDisplay((prev) =>
         prev.filter((item) =>
           selectedTags.every((tag) => item.tags.includes(tag))
@@ -32,7 +32,7 @@ export const ItemsProvider = ({ children }) => {
       );
     }
 
-    if (selectedBrands.length > 0 && !selectedBrands.includes("All")) {
+    if (selectedBrands.length > 0 && !selectedBrands.includes("All Brands")) {
       setProductsToDisplay((prev) =>
         prev.filter((item) =>
           selectedBrands.every(
@@ -67,7 +67,7 @@ export const ItemsProvider = ({ children }) => {
           itemTypes.push(item.itemType);
         }
       });
-      setProductTypes(itemTypes);
+      setProductTypes(itemTypes); 
     }
   }, [items]);
   useEffect(() => {
@@ -75,7 +75,7 @@ export const ItemsProvider = ({ children }) => {
     else setItemsLoading(false);
     calculateProductTypes();
     filterProducts();
-  }, [items, selectedType, selectedBrands, selectedTags, filterProducts]);
+  }, [items, selectedType, selectedBrands, selectedTags]);
 
   return (
     <ItemsContext.Provider
