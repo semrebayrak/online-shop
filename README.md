@@ -19,8 +19,9 @@ To Run This Project:
 Tests are written in app.test folder which can be found in src/App.test.json
 
 
-There are 5 tests for this project:
+There are 6 tests for this project:
 
+Sorting Options Mount Test -> Checks if the sorting filters are mount <br/>
 "Basket Mount Test" -> Checks if the basket is mount <br/>
 "Basket Add Item Test" -> Checks if an item can be added into the basket <br/>
 "Tag Occurence Counter Test" -> Checks if tag occurence is being counted <br/>
