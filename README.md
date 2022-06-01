@@ -4,10 +4,10 @@ This project is built by React-Hooks
 
 The data is set on a JSON server which can be found in public/data/server.json
 
-CSS files are filed in a main directory named "css"
-Component files are filed in a main directory named "components"
-Pages(only 1) are filed in a main directory named "pages"
-Additional(only 1) hooks are filed in a main directory named "hooks"
+CSS files are filed in a main directory named "css"  <br/>
+Component files are filed in a main directory named "components"  <br/>
+Pages(only 1) are filed in a main directory named "pages"  <br/>
+Additional(only 1) hooks are filed in a main directory named "hooks"  <br/>
 
 To Run This Project: 
 
@@ -21,10 +21,10 @@ Tests are written in app.test folder which can be found in src/App.test.json
 
 There are 5 tests for this project:
 
-"Basket Mount Test" -> Checks if the basket is mount 
-"Basket Add Item Test" -> Checks if an item can be added into the basket
-"Tag Occurence Counter Test" -> Checks if tag occurence is being counted
-"Brand Occurence Counter Test" -> Checks if brand occurence is being counted
+"Basket Mount Test" -> Checks if the basket is mount <br/>
+"Basket Add Item Test" -> Checks if an item can be added into the basket <br/>
+"Tag Occurence Counter Test" -> Checks if tag occurence is being counted <br/>
+"Brand Occurence Counter Test" -> Checks if brand occurence is being counted <br/>
 "Sorting Test" -> Check if sorting is working
 
 
