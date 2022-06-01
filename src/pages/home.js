@@ -10,6 +10,8 @@ import FilterCSS from "../css/filters/filters";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { useCallback } from "react";
+import { Footer } from "../components/basiccomponents/footer";
+import { Content } from "../css/basiccomponents/basiccomponents";
 
 const Home = () => {
   const { productsToDisplay, itemsLoading } = useContext(ItemsContext);
@@ -26,6 +28,7 @@ const Home = () => {
       });
     });
     setTags(tags);
+    return tags;
   }, [productsToDisplay]);
 
   useEffect(() => {
@@ -37,6 +40,7 @@ const Home = () => {
       <Fragment>
         <Header />
 
+        <Content.ContentContainer>
         <SortingBox
           absoluteOnMobile={true}
           setHideSortBox={setHideSortBox}
@@ -48,13 +52,17 @@ const Home = () => {
           <SearchBox type="Tags" data={tags} />
         </FilterCSS.SearchOptions>
 
-        <FilterCSS.SortButton onClick={() => setHideSortBox(!hideSortBox)}>
+        <FilterCSS.SortButton data-testid="sort-by" onClick={() => setHideSortBox(!hideSortBox)}>
           Sort by
           <FontAwesomeIcon icon={faSortDown} />
         </FilterCSS.SortButton>
 
         <Products />
         <Basket />
+        </Content.ContentContainer>
+
+
+        <Footer/>
       </Fragment>
     );
   } else {

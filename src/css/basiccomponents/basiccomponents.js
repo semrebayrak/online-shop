@@ -38,3 +38,23 @@ export const HeaderCSS = {
     }
   `,
 };
+
+export const FooterCSS = {
+  BottomInfoContainer: styled.div`
+  padding:0;
+  justify-content: center;
+  display:flex;
+    width: 100vw;
+    color: #1976D2;
+    font-size 13px;
+   text-align: center;
+   flex-direction: row;
+  gap:20px;
+ 
+  `,
+};
+export const Content = {
+  ContentContainer: styled.div`
+    padding: 0px;
+  `,
+};

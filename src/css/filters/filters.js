@@ -8,11 +8,14 @@ export const FilterCSS = {
     flex-direction: column;
     justify-content: start;
     padding: 0;
-    @media (max-width: 768px) {
+    float:left; display:inline;
+    @media (max-width: 805px) {
       width: 100%;
       margin: auto;
       position: static;
       flex-direction: row;
+    display: flex;
+
       justify-content: space-between;
     }
     @media (max-width: 600px) {
@@ -20,12 +23,15 @@ export const FilterCSS = {
     }
   `,
   FilterContainer: styled.div`
+  margin-bottom: 24px;
+
     flex-direction: column;
-    width: 26%;
+    width: 290px;
     position: relative;
     left: 10px;
     display: flex;
-    @media (max-width: 768px) {
+    padding:0;
+    @media (max-width: 805px) {
       width: 44%;
       left: 0;
     }
@@ -39,11 +45,11 @@ export const FilterCSS = {
     padding: 10px;
     background: #1976d2;
     border: none;
-    @media (max-width: 768px) {
+    @media (max-width: 805px) {
       gap: 10px;
       display: flex;
       position: relative;
-      left: 24px;
+      top:30px;
       cursor: pointer;
     }
   `,
@@ -54,7 +60,7 @@ export const FilterCSS = {
     font-size: 13px;
     color: #697488;
     margin-bottom: 12px;
-    @media (max-width: 768px) {
+    @media (max-width: 805px) {
       display: ${(props) => props.hide && "none"};
     }
   `,
@@ -70,21 +76,20 @@ export const FilterCSS = {
     border-radius: 2px;
     align-items: center;
     display: flex;
-    @media (max-width: 768px) {
+    @media (max-width: 805px) {
       min-width: ${(props) => (props.absoluteOnMobile ? "250px" : "0px")};
 
       display: ${(props) => (props.hide ? "none" : "flex")};
       position: ${(props) => props.absoluteOnMobile && "absolute"};
       z-index: ${(props) => props.absoluteOnMobile && "9"};
-      left: ${(props) => props.absoluteOnMobile && "25px"};
-      top: ${(props) => props.absoluteOnMobile && "420px"};
+      top: ${(props) => props.absoluteOnMobile && "353px"};
       border-width: ${(props) => props.absoluteOnMobile && "0px 1px 1px 1px"};
       border-style: ${(props) => props.absoluteOnMobile && "solid"};
       box-shadow: ${(props) =>
         props.absoluteOnMobile && "0px 0px 10px 0px rgba(0,0,0,0.75)"};
     }
     @media (max-width: 600px) {
-      top: ${(props) => props.absoluteOnMobile && "753px"};
+      top: ${(props) => props.absoluteOnMobile && "640px"};
     }
   `,
 

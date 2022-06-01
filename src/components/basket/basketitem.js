@@ -22,7 +22,7 @@ export const BasketItem = ({ item }) => {
     setBasket(temp);
   };
   return (
-    <BasketItemCSS.ItemContainer>
+    <BasketItemCSS.ItemContainer data-testid={"basket-item"} >
       <BasketItemCSS.ItemInfo>
         {item.name}
         <ProductCSS.Price>{item.price}</ProductCSS.Price>

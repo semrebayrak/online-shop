@@ -16,6 +16,8 @@ export const ItemsProvider = ({ children }) => {
   const [selectedBrands, setSelectedBrands] = useState([]);
 
   const filterProducts = () => {
+    
+
     if (selectedType) {
       setProductsToDisplay(
         items.filter((item) => item.itemType == productTypes[selectedType])
@@ -23,7 +25,7 @@ export const ItemsProvider = ({ children }) => {
     } else {
       setProductsToDisplay(items);
     }
-
+    console.log(selectedTags)
     if (selectedTags.length > 0 && !selectedTags.includes("All")) {
       
       setProductsToDisplay(

@@ -22,7 +22,7 @@ const SearchBox = ({ data, type }) => {
           {data.length >0 && data
             .filter((item) => item.toLowerCase().includes(value.toLowerCase()))
             ?.map((item, index) => {
-              return <SearchBoxListItem type={type} item={item} key={index} />;
+              return <SearchBoxListItem type={type} item={item} index={index} key={index} />;
             })}
         </FilterCSS.Ul>
       </FilterCSS.Rectangle>

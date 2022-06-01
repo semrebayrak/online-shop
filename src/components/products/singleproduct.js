@@ -2,8 +2,8 @@ import { useContext } from "react";
 import BasketContext from "../../context/basketcontext";
 import { ProductCSS } from "../../css/product/product";
 
-const SingleProduct = ({ product }) => {
-  const { basket, setBasket, productTypes } = useContext(BasketContext);
+const SingleProduct = ({ product,index }) => {
+  const { basket, setBasket } = useContext(BasketContext);
 
   const addToBasket = () => {
     let tempBasket = [...basket];
@@ -25,7 +25,9 @@ const SingleProduct = ({ product }) => {
   var productType = temp[temp.length - 1];
   temp.pop();
   var productName = temp.join(" ");
-
+  if(productName?.length> 20){
+    productName = productName.substring(0,20)+"...";
+  }
 
   return (
     <ProductCSS.SinlgeProductContainer>
@@ -40,13 +42,13 @@ const SingleProduct = ({ product }) => {
         <ProductCSS.TextInfo>{productName}</ProductCSS.TextInfo>
         <ProductCSS.TextInfo>{productType}</ProductCSS.TextInfo>
 
-        <ProductCSS.Button
+        <ProductCSS.Button data-testid={"add-to-basket-" + index}
           onClick={() => {
             addToBasket();
           }}
         >
           Add
-        </ProductCSS.Button>
+        </ProductCSS.Button >
       </ProductCSS.InfoContainer>
     </ProductCSS.SinlgeProductContainer>
   );

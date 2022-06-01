@@ -5,25 +5,32 @@ export const ProductCSS = {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    position: absolute;
-    left: 26%;
-    top: 100px;
-    min-width: 49%;
-
+    position: relative;
+    left: 3%;
+    padding: 0;
+    width: 51%;
     @media (max-width: 1400px) {
-      width: 70%;
+      max-width: none;
+      left: 4%;
+      width: 67%;
     }
     @media (max-width: 1050px) {
-      left: 40%;
-      width: 56%;
+      width: 55%;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
+      width: 52%;
+    }
+    @media (max-width: 805px) {
+      top: 40px;
+      left: 0;
       width: 100%;
       margin: auto;
-      position: static;
+      position: relative;
     }
   `,
   ProductsList: styled.div`
+  padding-left:10px;
+padding-right: 10px;
     display: grid;
     background-color: #ffffff;
     column-gap: 5%;
@@ -34,11 +41,18 @@ export const ProductCSS = {
     @media (max-width: 1050px) {
       column-gap: 7%;
 
-      max-width: 400px;
-      grid-template-columns: repeat(auto-fit, 140px);
+      grid-template-columns: repeat(auto-fit, 134px);
       min-width: 200px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 950px) {
+
+      grid-template-columns: repeat(auto-fit, 115px);
+    }
+    @media (max-width: 870px) {
+
+      grid-template-columns: repeat(auto-fit, 170px);
+    }
+    @media (max-width: 805px) {
       max-width: none;
       grid-template-columns: repeat(auto-fit, max(40%, 150px));
     }
@@ -82,7 +96,8 @@ export const ProductCSS = {
     line-height: 20px;
     color: #191919;
     width: 120%;
-
+    height: 20px;
+    overflow: hidden;
   `,
 
   Button: styled.button`

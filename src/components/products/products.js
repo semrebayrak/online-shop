@@ -79,7 +79,7 @@ export const Products = () => {
       </ProductTypesCSS.Container>
       <ProductCSS.ProductsList>
         {productsOnPage?.map((product, index) => (
-          <SingleProduct key={index} product={product} />
+          <SingleProduct key={index} index={index} product={product} />
         ))}
       </ProductCSS.ProductsList>
       <ProductPaginationCSS.Container>

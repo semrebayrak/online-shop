@@ -16,7 +16,8 @@ const SortingBox = ({ absoluteOnMobile,hide,setHideSortBox,type }) => {
 
   useEffect(() => {
     
-    let tempArray = [...items];;
+    if(items){
+      let tempArray = [...items];
 
     if(selectedIndex===0){ // Order by Price Low to High
       tempArray.sort((a, b) => a.price > b.price ? 1 : -1);
@@ -34,6 +35,7 @@ const SortingBox = ({ absoluteOnMobile,hide,setHideSortBox,type }) => {
 
     }
     setItems(tempArray)
+    }
 
   }, [selectedIndex]);
   return (

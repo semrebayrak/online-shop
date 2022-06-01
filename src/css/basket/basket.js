@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BasketCSS = {
   Rectangle: styled.div`
     position: fixed;
-    right: 5% ;
+    right: 48px;
     background-color: #ffffff;
     flex-direction: column;
     top: 8vw;

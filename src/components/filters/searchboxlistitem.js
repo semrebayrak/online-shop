@@ -4,9 +4,8 @@ import CompaniesContext from "../../context/companiescontext";
 import ItemsContext from "../../context/itemscontext";
 import FilterCSS from "../../css/filters/filters";
 
-const SearchBoxListItem = ({ item, type }) => {
+const SearchBoxListItem = ({ item, type,index }) => {
   const [counter, setCounter] = useState(0);
-
   const {
     productsToDisplay,
     selectedBrands,
@@ -16,28 +15,31 @@ const SearchBoxListItem = ({ item, type }) => {
   } = useContext(ItemsContext);
 
   const { companies } = useContext(CompaniesContext);
-
   const handleCheck = (e) => {
     let checked = e.currentTarget.checked;
 
     if (checked) {
       if (type === "Brands") {
-        setSelectedBrands([...selectedBrands, e.target.value]);
+        setSelectedBrands([...selectedBrands, item]);
       } else if (type === "Tags") {
-        setSelectedTags([...selectedTags, e.target.value]);
+        setSelectedTags([...selectedTags,item]);
       }
     } else {
       if (type === "Brands") {
         setSelectedBrands(
-          selectedBrands.filter((item) => item !== e.target.value)
+          selectedBrands.filter((brand) => brand !== item)
         );
       } else if (type === "Tags") {
-        setSelectedTags(selectedTags.filter((item) => item !== e.target.value));
+        setSelectedTags(selectedTags.filter((tag) => tag !== item));
       }
     }
+
+    return checked
   };
 
-  useEffect(() => {
+
+  const countItem = () => {
+
     if (item === "All") {
       setCounter(productsToDisplay.length);
       return;
@@ -53,6 +55,10 @@ const SearchBoxListItem = ({ item, type }) => {
     } else if (type === "Tags") {
       setCounter(productsToDisplay.filter((product) => product.tags.includes(item)).length);
     }
+  }
+  useEffect(() => {
+    countItem();
+    
   }, [productsToDisplay,companies,item,type]);
   if(counter>0)
   return (
@@ -63,7 +69,7 @@ const SearchBoxListItem = ({ item, type }) => {
         value={item}
       />
       <FilterCSS.ListItemName>
-        {item} <FilterCSS.ItemNumber>({counter})</FilterCSS.ItemNumber>
+        {item} <FilterCSS.ItemNumber data-testid={type + "-count-" + index }>({counter})</FilterCSS.ItemNumber>
       </FilterCSS.ListItemName>
     </FilterCSS.ListItem>
   );
