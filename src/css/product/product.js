@@ -9,6 +9,7 @@ export const ProductCSS = {
     left: 3%;
     padding: 0;
     width: 51%;
+    
     @media (max-width: 1400px) {
       max-width: none;
       left: 4%;
@@ -29,8 +30,8 @@ export const ProductCSS = {
     }
   `,
   ProductsList: styled.div`
-  padding-left:10px;
-padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     display: grid;
     background-color: #ffffff;
     column-gap: 5%;
@@ -45,11 +46,9 @@ padding-right: 10px;
       min-width: 200px;
     }
     @media (max-width: 950px) {
-
       grid-template-columns: repeat(auto-fit, 115px);
     }
     @media (max-width: 870px) {
-
       grid-template-columns: repeat(auto-fit, 170px);
     }
     @media (max-width: 805px) {

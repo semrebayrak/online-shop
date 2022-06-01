@@ -8,7 +8,7 @@ export const FilterCSS = {
     flex-direction: column;
     justify-content: start;
     padding: 0;
-    float:left; display:inline;
+    float:left; 
     @media (max-width: 805px) {
       width: 100%;
       margin: auto;
@@ -22,9 +22,17 @@ export const FilterCSS = {
       flex-direction: column;
     }
   `,
+  Filters: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0;
+    float:left; 
+    
+  `,
   FilterContainer: styled.div`
   margin-bottom: 24px;
-
+  display:inline;
     flex-direction: column;
     width: 290px;
     position: relative;
@@ -48,9 +56,15 @@ export const FilterCSS = {
     @media (max-width: 805px) {
       gap: 10px;
       display: flex;
-      position: relative;
-      top:30px;
-      cursor: pointer;
+      position: absolute;
+      top:475px;
+      left:140px;
+      z-index:99;
+
+    }
+    @media (max-width: 600px) {
+      top:785px;
+      
     }
   `,
 
@@ -82,14 +96,14 @@ export const FilterCSS = {
       display: ${(props) => (props.hide ? "none" : "flex")};
       position: ${(props) => props.absoluteOnMobile && "absolute"};
       z-index: ${(props) => props.absoluteOnMobile && "9"};
-      top: ${(props) => props.absoluteOnMobile && "353px"};
+      top: ${(props) => props.absoluteOnMobile && "410px"};
       border-width: ${(props) => props.absoluteOnMobile && "0px 1px 1px 1px"};
       border-style: ${(props) => props.absoluteOnMobile && "solid"};
       box-shadow: ${(props) =>
         props.absoluteOnMobile && "0px 0px 10px 0px rgba(0,0,0,0.75)"};
     }
     @media (max-width: 600px) {
-      top: ${(props) => props.absoluteOnMobile && "640px"};
+      top: ${(props) => props.absoluteOnMobile && "720px"};
     }
   `,
 

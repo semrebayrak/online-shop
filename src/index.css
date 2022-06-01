@@ -25,3 +25,7 @@ div{
     box-sizing: border-box;
     padding: 24px;
 }
+
+button{
+  cursor: pointer;
+}

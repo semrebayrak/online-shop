@@ -34,35 +34,42 @@ const Home = () => {
   useEffect(() => {
     prepareTags();
   }, [prepareTags]);
-  
+
   if (!itemsLoading && !companiesLoading) {
     return (
       <Fragment>
         <Header />
 
         <Content.ContentContainer>
-        <SortingBox
-          absoluteOnMobile={true}
-          setHideSortBox={setHideSortBox}
-          hide={hideSortBox}
-          type="Sorting"
-        />
-        <FilterCSS.SearchOptions>
-          <SearchBox type="Brands" data={companies.map((item) => item.name)} />
-          <SearchBox type="Tags" data={tags} />
-        </FilterCSS.SearchOptions>
+          <FilterCSS.Filters>
+            <SortingBox
+              absoluteOnMobile={true}
+              setHideSortBox={setHideSortBox}
+              hide={hideSortBox}
+              type="Sorting"
+            />
+            <FilterCSS.SearchOptions>
+              <SearchBox
+                type="Brands"
+                data={companies.map((item) => item.name)}
+              />
+              <SearchBox type="Tags" data={tags} />
+            </FilterCSS.SearchOptions>
+          </FilterCSS.Filters>
 
-        <FilterCSS.SortButton data-testid="sort-by" onClick={() => setHideSortBox(!hideSortBox)}>
-          Sort by
-          <FontAwesomeIcon icon={faSortDown} />
-        </FilterCSS.SortButton>
+          <FilterCSS.SortButton
+            data-testid="sort-by"
+            onClick={() => setHideSortBox(!hideSortBox)}
+          >
+            Sort
+            <FontAwesomeIcon icon={faSortDown} />
+          </FilterCSS.SortButton>
 
-        <Products />
-        <Basket />
+          <Products />
+          <Basket />
         </Content.ContentContainer>
 
-
-        <Footer/>
+        <Footer />
       </Fragment>
     );
   } else {

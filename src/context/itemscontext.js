@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useCallback } from "react";
 import { useContext } from "react";
 import CompaniesContext from "./companiescontext";
 
@@ -15,39 +15,43 @@ export const ItemsProvider = ({ children }) => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
 
-  const filterProducts = () => {
-    
-
+  const filterProducts = useCallback(() => {
     if (selectedType) {
       setProductsToDisplay(
-        items.filter((item) => item.itemType == productTypes[selectedType])
+        items.filter((item) => item.itemType === productTypes[selectedType])
       );
     } else {
       setProductsToDisplay(items);
     }
-    console.log(selectedTags)
+    console.log(selectedTags);
+
     if (selectedTags.length > 0 && !selectedTags.includes("All")) {
-      
-      setProductsToDisplay(
-        productsToDisplay.filter((item) =>
+      setProductsToDisplay((prev) =>
+        prev.filter((item) =>
           selectedTags.every((tag) => item.tags.includes(tag))
         )
       );
     }
 
     if (selectedBrands.length > 0 && !selectedBrands.includes("All")) {
-      setProductsToDisplay(
-        productsToDisplay.filter((item) =>
+      setProductsToDisplay((prev) =>
+        prev.filter((item) =>
           selectedBrands.every(
             (brand) =>
-              companies.find((company) => company.name == brand).slug ==
+              companies.find((company) => company.name === brand).slug ===
               item.manufacturer
           )
         )
       );
     }
-    
-  };
+  }, [
+    selectedTags,
+    selectedBrands,
+    selectedType,
+    companies,
+    items,
+    productTypes,
+  ]);
 
   const fetchItems = async () => {
     await fetch("http://localhost:8000/items")
@@ -60,7 +64,7 @@ export const ItemsProvider = ({ children }) => {
     else setItemsLoading(false);
 
     filterProducts();
-  }, [items, selectedType, selectedBrands, selectedTags]);
+  }, [items, selectedType, selectedBrands, selectedTags, filterProducts]);
 
   return (
     <ItemsContext.Provider

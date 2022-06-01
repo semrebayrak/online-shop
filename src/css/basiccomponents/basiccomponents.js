@@ -44,6 +44,7 @@ export const FooterCSS = {
   padding:0;
   justify-content: center;
   display:flex;
+  margin-top:200px;
     width: 100vw;
     color: #1976D2;
     font-size 13px;
@@ -56,5 +57,11 @@ export const FooterCSS = {
 export const Content = {
   ContentContainer: styled.div`
     padding: 0px;
+    @media (max-width: 600px) {
+      align-items: center;
+      justify-content: center;
+      flex-direction:column;
+      display:flex;
+    }
   `,
 };
