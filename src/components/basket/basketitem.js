@@ -4,16 +4,16 @@ import { BasketItemCSS } from "../../css/basket/basket.js";
 import { ProductCSS } from "../../css/product/product";
 
 export const BasketItem = ({ item }) => {
-  const { basket, setBasket } = useContext(BasketContext);
+  const { basketLocal,basket, setBasket } = useContext(BasketContext);
 
   const addAmount = () => {
-    let temp = [...basket];
+    let temp = [...basketLocal];
     temp[temp.indexOf(item)].quantity++;
     setBasket(temp);
   };
 
   const removeAmount = () => {
-    let temp = [...basket];
+    let temp = [...basketLocal];
     if (temp[temp.indexOf(item)].quantity > 1) {
       temp[temp.indexOf(item)].quantity--;
     } else {

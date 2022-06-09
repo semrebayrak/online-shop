@@ -53,7 +53,7 @@ export const ItemsProvider = ({ children }) => {
   ]);
 
   const fetchItems = async () => {
-    await fetch("http://localhost:8000/items")
+    await fetch("http://renkligoz.com/data/items.json")
       .then((res) => res.json())
       .then((result) => setItems(result));
   };
@@ -67,7 +67,7 @@ export const ItemsProvider = ({ children }) => {
           itemTypes.push(item.itemType);
         }
       });
-      setProductTypes(itemTypes); 
+      setProductTypes(itemTypes.sort((a, b) => a[0] > b[0] ? 1 : -1)); 
     }
   }, [items]);
   useEffect(() => {
